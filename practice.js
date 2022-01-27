@@ -3,15 +3,30 @@
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Function that returns a promise.
-const fetchData = require('./fetchDataLibrary')
-
+const fetchData = require("./fetchDataLibrary");
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 10. Call fetchData (which returns a promise) and use the .then()  method to log the value the promise resolves with to the javascript console.
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-fetchData().then((data) => console.log(data))
+fetchData()
+	.then((data) => console.log(".then/.catch Function: ", data))
+	.catch((error) =>
+		console.log(".then/.catch Function Error thrown!", error.message)
+	);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 11. Call fetchData (which returns a promise) and use the async/await method to log the value the promise resolves with to the javascript console.
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+async function callData() {
+  try {
+    let result = await fetchData();
+    console.log("Async/Await function: ", result);
+  }
+  catch (error) {
+    console.log("Async/Await function Error thrown!", error.message);
+  }
+}
+
+callData();
